@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+.wrap{width:930px; position:relative; margin:0 auto; overflow:hidden}
+.round01{position:relative}
+.round02{position:relative}
+.round03{position:relative}
+.nextDepth{text-indent:-9999px; z-index:20}
+audio{position:absolute; left:-9999px; top:-9999px; width:0; height:0}
+.noDisplay{display:none}
+
+/* 스타트 */
+.nocar{position:absolute; right:0; bottom:172px}
+.tiguan{position:absolute; right:0; bottom:172px; display:none}
+a.start{width:165px; height:59px; position:absolute; left:395px; bottom:84px; text-indent:-9999px; background:url(../images/okbtn.png) 0 0 no-repeat}
+
+
+/* 1라운드 */
+.round01 .depth01 a.nextDepth{width:162px; height:59px; position:absolute; left:395px; bottom:268px; background:#fff; opacity:0; filter: alpha(opacity:'0');}
+.round01 .depth02 a.nextDepth{width:165px; height:59px; position:absolute; left:395px; bottom:75px; background:url(../images/okbtn.png) 0 0 no-repeat}
+.round01 .depth02 .overlay{position:absolute; left:0; top:0; z-index:15; display:none}
+.round01 .depth03 a{width:162px; height:55px; position:absolute; left:395px; bottom:131px; text-indent:-9999px; background:#fff; opacity:0; filter: alpha(opacity:'0');}
+
+/* 2라운드 */
+.round02 .depth01 a.nextDepth{width:162px; height:59px; position:absolute; left:395px; bottom:268px; background:#fff; opacity:0; filter: alpha(opacity:'0');}
+.round02 .depth02 a.nextDepth{width:165px; height:59px; position:absolute; left:392px; bottom:45px; background:url(../images/okbtn.png) 0 0 no-repeat}
+.round02 .depth02 .overlay{position:absolute; left:0; top:0; z-index:5; display:none}
+.round02 .depth03 a{width:165px; height:56px; position:absolute; left:395px; bottom:129px; text-indent:-9999px; background:#fff; opacity:0; filter: alpha(opacity:'0');}
+
+/* 3라운드 */
+.round03 .depth01 a.nextDepth{width:162px; height:59px; position:absolute; left:395px; bottom:268px; background:#fff; opacity:0; filter: alpha(opacity:'0');}
+.round03 .depth02 a.nextDepth{width:162px; height:59px; position:absolute; left:398px; bottom:39px; background:url(../images/okbtn.png) 0 0 no-repeat;}
+.round03 .depth02 .overlay{position:absolute; left:0; top:0; z-index:5; display:none}
+.round03 .depth03 a{width:165px; height:56px; position:absolute; left:392px; bottom:129px; text-indent:-9999px; background:#fff; opacity:0; filter: alpha(opacity:'0');}
+
+/* 개인정보 입력 */
+.privacy{overflow:hidden}
+.privacy > a{position:absolute; width:162px; height:59px; position:absolute; left:395px; bottom:50px; text-indent:-9999px; background:url(../images/okbtn.png) 0 0 no-repeat}
+.privacy-box{width:650px; height:118px; overflow-y:scroll; background:#fff; border:1px solid #bbb8af; position:absolute; left:137px; top:246px; padding:15px 10px; line-height:17px; word-break:break-all}
+.privacy-agree{width:670px; color:#333; position:absolute; left:138px; top:424px; font-weight:bold; letter-spacing:-0.5px}
+.privacy-agree input{vertical-align:middle; margin-left:10px}
+.privacy-form{width:667px; height:140px; position:absolute; left:141px; top:467px}
+.privacy-form form{position:relative; height:100%}
+.i-name{position:absolute; left:190px; top:17px}
+.i-name input{width:295px; border:0; background:#fff; color:#666; font-size:13px; padding:10px 0}
+.i-phone{width:460px; position:absolute; left:190px; top:88px;}
+.i-phone input{width:73px; border:0; background:#fff; color:#666; font-size:13px; text-align:center; padding:10px 0}
+.i-phone .num02{margin-left:44px}
+.i-phone .num03{margin-left:40px}
+.i-phone .phoner{position:absolute; right:0; top:-10px; width:120px; height:36px; text-indent:-9999px; background:#fff; opacity:0; filter:alpha(opacity:'0'); z-index:10; cursor:pointer}
+.i-call{width:460px; position:absolute; left:190px; top:159px}
+.i-call input{width:295px; border:0; background:#fff; color:#666; font-size:13px; padding:10px 0}
+.i-call .caller{position:absolute; right:0; top:-10px; width:120px; height:36px; text-indent:-9999px; background:#fff; opacity:0; filter:alpha(opacity:'0'); z-index:10; cursor:pointer}
+
+
+/* 1라운드 애니메이션 */
+.r01{z-index:10; width:340px; height:35px}
+.r01 .left{position:absolute; left:60px; top:444px; overflow:hidden; width:340px; height:35px}
+.r01 .right{position:absolute; left:535px; top:444px; overflow:hidden; width:340px; height:35px}
+.r01 .lt{width:50%; height:35px; background:#fff; position:absolute; left:0; top:0}
+.r01 .rt{width:50%; height:35px; background:#fff; position:absolute; left:50%; top:0}
+
+.r02{z-index:10}
+.r02 .left{position:absolute; left:60px; top:479px; overflow:hidden; width:340px; height:35px;}
+.r02 .right{position:absolute; left:535px; top:479px; overflow:hidden; width:340px; height:35px}
+.r02 .lt{width:50%; height:37px; background:#fff; position:absolute; left:0; top:0}
+.r02 .rt{width:50%; height:37px; background:#fff; position:absolute; left:50%; top:0}
+
+.r03{z-index:10}
+.r03 .left{position:absolute; left:60px; top:725px; overflow:hidden; width:340px; height:40px}
+.r03 .right{position:absolute; left:535px; top:725px; overflow:hidden; width:340px; height:40px}
+.r03 .lt{width:50%; height:40px; background:#fff; position:absolute; left:0; top:0}
+.r03 .rt{width:50%; height:40px; background:#fff; position:absolute; left:50%; top:0}
+
+/* 2라운드 애니메이션 */
+.d01{z-index:10; width:300px; height:65px; overflow:hidden; position:absolute; left:85px; top:465px; background:#fff}
+.d01 .lt{width:50%; height:65px; position:absolute; left:0; top:0; display:block; background:#fff}
+.d01 .rt{width:50%; height:65px; position:absolute; left:50%; top:0; display:block; background:#fff}
+
+.d02{z-index:10; width:300px; height:65px; overflow:hidden; position:absolute; left:560px; top:465px; background:#fff}
+.d02 .lt{width:50%; height:65px; position:absolute; left:0; top:0; display:block; background:#fff}
+.d02 .rt{width:50%; height:65px; position:absolute; left:50%; top:0; display:block; background:#fff}
+
+.d03{z-index:10; width:300px; height:30px; overflow:hidden; position:absolute; left:85px; top:725px; background:#fff}
+.d03 .lt{width:50%; height:30px; position:absolute; left:0; top:0; display:block; background:#fff}
+.d03 .rt{width:50%; height:30px; position:absolute; left:50%; top:0; display:block; background:#fff}
+
+.d04{z-index:10; width:300px; height:30px; overflow:hidden; position:absolute; left:560px; top:725px; background:#fff}
+.d04 .lt{width:50%; height:30px; position:absolute; left:0; top:0; display:block; background:#fff}
+.d04 .rt{width:50%; height:30px; position:absolute; left:50%; top:0; display:block; background:#fff}
+
+.lcar01{width:315px; height:159px; position:absolute; left:75px; top:292px; overflow:hidden; z-index:20; border-radius:10px; box-shadow: 0px 0px 8px #8b8b8b;}
+.lcar01 .car{position:absolute; left:-140px; bottom:-18px; z-index:2}
+.rcar01{width:315px; height:159px; position:absolute; left:550px; top:292px; overflow:hidden; z-index:20; border-radius:10px; box-shadow: 0px 0px 8px #8b8b8b;}
+.rcar01 .car{position:absolute; left:-131px; bottom:-20px; z-index:2}
+.lcar01 .unduk{position:absolute; left:-300px; bottom:-216px}
+.rcar01 .unduk{position:absolute; left:-300px; bottom:-216px}
+
+.lcar02{width:315px; height:187px; position:absolute; left:75px; top:530px; overflow:hidden; z-index:20; border-radius:10px;}
+.lcar02 img{position:absolute; left:-195px; bottom:5px; z-index:2}
+.rcar02{width:315px; height:187px; position:absolute; left:550px; top:530px; overflow:hidden; z-index:20; border-radius:10px;}
+.rcar02 img{position:absolute; left:-195px; bottom:5px; z-index:2}
+ 
+.seaBg01{z-index:19; position:absolute; left:75px; top:557px; width:315px; height:160px; overflow:hidden; border-radius:10px; box-shadow: 0px 0px 8px #8b8b8b}
+.seaBg02{z-index:19; position:absolute; left:550px; top:557px; width:315px; height:160px; overflow:hidden; border-radius:10px; box-shadow: 0px 0px 8px #8b8b8b}
+.seaBg01 img{position:relative}
+.seaBg02 img{position:relative}
+.lcar02 .doro{position:absolute; right:0; top:0; left:auto; bottom:auto; right:-600px; top:79px; z-index:1}
+.rcar02 .doro{position:absolute; right:0; top:0; left:auto; bottom:auto; right:-600px; top:79px; z-index:1}
+
+.sl1{z-index:20; position:absolute; left:75px; top:550px}
+.sl2{z-index:20; position:absolute; left:380px; top:550px}
+
+.lose{position:absolute; right:33px; top:151px; z-index:20; display:none}
+.vs{position:absolute; left:365px; top:162px; z-index:25}
+
+/* 3라운드 애니메이션 */
+.action{width:930px; height:208px; overflow:hidden; position:absolute; left:0; top:350px; padding-top:200px; z-index:19;}
+.action .left{width:300px; text-align:center; display:block; height:208px; position:absolute; left:40px;}
+.action .right{width:300px; text-align:center; display:block; height:208px; position:absolute; right:143px}
+.action .left img{position:absolute; left:39%; bottom:-300px; margin-left:-25%; border-radius:10px}
+.action .right img{position:absolute; left:47%; bottom:-300px; margin-left:-25%; border-radius:10px}

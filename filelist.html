@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<title>FileList By JR</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<style type="text/css">
+		@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+		html,body{width:100%; font-family:'Nanum Gothic', '나눔고딕', '돋움', Dotum, Helvetica, 'Apple SD Gothic Neo', Sans-serif}
+		body{word-break:break-all; background:#111}
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button{margin:0; padding:0}
+		input,select,button{vertical-align:middle}
+		img{vertical-align:top;}
+		a{color:#333; text-decoration:none}
+		a:hover{color:#333; text-decoration:none}
+		a:link, a:visited{text-decoration:none}
+		
+		#fontMenu{z-index:50; overflow:hidden}
+		#fontMenu li{margin:0 0 10px 0; transition:0.3s ease-out; overflow:hidden}
+		#fontMenu li a{display:inline-block; width:30px; height:30px; line-height:31px; border:5px solid #8a1204; border-radius:50%; overflow:hidden; background:#111; text-align:center; color:#8a1204; font-weight:bold;}
+		#fontMenu li a.plus{font-size:32px;}
+		#fontMenu li a.minus{font-size:55px;}
+		
+		#header{width:100%; height:110px; overflow:hidden; position:fixed; left:0; top:0; z-index:100; border-bottom:5px solid #8a1204}
+		#header .header{width:100%; min-width:1000px; height:110px; position:relative; background:#111}
+		#header .header h1{font-size:25px; font-style:italic; color:#FFF; font-weight:bold; position:absolute; left:15px; top:15px}
+		#header .header h2{font-size:15px; font-style:italic; color:#FFF; position:absolute; left:15px; top:50px}
+		#header .header h2 span{font-style:normal}
+		
+		.device-tab{position:absolute; left:15px; bottom:0}
+		.device-tab li{float:left; list-style:none; border-right:2px solid #000}
+		.device-tab li a{display:block; width:130px; padding:5px 0px; text-align:center; font-size:12px; color:#FFF}
+		.device-tab li a:hover{background:#8a1204; color:#fff}
+		.device-tab li.on a{background:#8a1204; font-weight:bold; color:#fff}
+		
+		#content{width:auto; min-width:1000px; padding:145px 15px 15px 15px; position:relative; color:#FFF}
+		#content .fileList{display:none; margin-right:85px}
+		#content .fileList.on{display:block}
+		
+		.listTable{width:100%; border-collapse:collapse; border-spacing:0; table-layout:fixed}
+		.listTable thead th{padding:5px 10px; font-size:13px; color:#fff; text-align:left; border:1px solid #111; background:#8a1204}
+		.listTable tbody th{padding:5px 10px; font-size:12px; color:#fff; text-align:left; border:1px solid #111; background:#32353C; vertical-align:top}
+		.listTable tbody td{padding:5px 10px; font-size:12px; color:#fff; text-align:left; border:1px solid #111; background:#545765}
+		.listTable tbody td a{color:#45b6fd}
+		.listTable tbody td a:hover{text-decoration:underline}
+	</style>
+	
+	<script type="text/javascript">
+		//헤더 스크롤
+		$(window).scroll(function(){
+			$("#header").scrollLeft($(window).scrollLeft());
+		});
+		
+		//폰트 메뉴
+		$(function(){
+			var stand = $('#header');
+			var quick = $('#fontMenu');
+			var top = stand.offset().top + stand.outerHeight() + 30;
+			var left = stand.offset().left + stand.outerWidth() - 70;
+			
+			quick.css({position:'absolute', top:top, left:left});
+			$(window).bind('resize scroll', function(){
+				var top = stand.offset().top + stand.outerHeight() + 30;
+				var left = stand.offset().left + stand.outerWidth() - 70;
+				var rTop = $(window).scrollTop() >= top ? $(window).scrollTop() - 0 : top;
+				quick.css({left:left}).animate({top:rTop}, {duration:300, queue:false});
+			});
+		});
+		
+		//폰트 확대 축소		
+		function plusFont(){
+			var $region = $(".listTable tbody th, .listTable tbody td");
+			var fontSize = $region.css("font-size");
+			var num = parseFloat(fontSize, 4);
+			var unit = fontSize.slice(-2);
+			
+			if ($(".listTable tbody th, .listTable tbody td"), num <= 30) {
+				num *= 1.2;	
+			}
+			
+			$region.css("font-size", num + unit);
+		};
+		
+		function minusFont(){
+			var $region = $(".listTable tbody th, .listTable tbody td");
+			var fontSize = $region.css("font-size");
+			var num = parseFloat(fontSize, 4);
+			var unit = fontSize.slice(-2);
+			
+			if ($(".listTable tbody th, .listTable tbody td"), num >= 10) {
+				num /= 1.2;	
+			}
+			
+			$region.css("font-size", num + unit);
+		};
+
+		//디바이스 탭
+		function deviceTab(e){
+			if(e == "pc"){
+				$(".device-tab li").removeClass("on");
+				$(".fileList").removeClass("on");
+				$(".pc").addClass("on");
+				
+			} else if (e == "mobile"){
+				$(".device-tab li").removeClass("on");
+				$(".fileList").removeClass("on");
+				$(".mobile").addClass("on");
+			} else if (e == "admin"){
+				$(".device-tab li").removeClass("on");
+				$(".fileList").removeClass("on");
+				$(".admin").addClass("on");
+			} else if (e == "etc"){
+				$(".device-tab li").removeClass("on");
+				$(".fileList").removeClass("on");
+				$(".etc").addClass("on");
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<div id="fontMenu">
+		<ul>
+			<li><a href="javascript:plusFont();" class="plus">+</a></li>
+			<li><a href="javascript:minusFont();" class="minus">-</a></li>
+		</ul>
+	</div>
+
+	<!-- HEADER -->
+	<div id="header">
+		<div class="header">
+			<h1>기아 자동차 스포티지 이벤트</h1>
+			<h2>Published by&nbsp;<span>최정락</span></h2>
+			
+			<ul class="device-tab">
+				<li class="pc on"><a href="javascript:deviceTab('pc');">PC (8/8)</a></li>
+				<li class="etc"><a href="javascript:deviceTab('etc');">ETC (0/0)</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //HEADER -->
+	
+	<!-- CONTENT -->
+	<div id="content">
+	
+		<!-- PC -->
+		<div class="fileList pc on">
+			
+			<table class="listTable">
+				<colgroup>
+					<col style="width:20%">
+					<col style="width:12%">
+					<col style="width:12%">
+					<col style="width:12%">
+					<col style="width:24%">
+					<col style="width:20%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>1DEPTH</th>
+						<th>2DEPTH</th>
+						<th>3DEPTH</th>
+						<th>4DEPTH</th>
+						<th>FILE LINK</th>
+						<th>ETC</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>참여안내 화면</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/take.html" target="_blank">html/take.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>시작화면</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/start.html" target="_blank">html/start.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>라운드1 화면</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/round01.html" target="_blank">html/round01.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>라운드2 화면</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/round02.html" target="_blank">html/round02.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>라운드3 화면</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/round03.html" target="_blank">html/round03.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>개인정보 입력 화면</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/privacy.html" target="_blank">html/privacy.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>당첨결과 확인 화면(당첨)</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/affir.html" target="_blank">html/affir.html</a></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>당첨결과 확인 화면(미당첨)</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="html/affir_not.html" target="_blank">html/affir_not.html</a></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		<!-- //PC -->
+		
+		
+		<!-- ETC -->
+		<div class="fileList etc">
+			기타
+		</div>
+		<!-- //ETC -->
+		
+	</div>
+	<!-- //CONTENT -->
+
+</body>
+</html>
