@@ -2,7 +2,7 @@
 기아 뉴 스포티지 위대한 도전(jQuery UI Easing)  
 
 
-https://jeongrakchoi.github.io/KIA_Animation_Event/html/round01.html  
+<a href="https://jeongrakchoi.github.io/KIA_Animation_Event/html/round01.html" target="_blank">https://jeongrakchoi.github.io/KIA_Animation_Event/html/round01.html</a>  
 
 ![kia](./images/kia01.gif)  
   
